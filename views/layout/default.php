@@ -68,6 +68,7 @@
 
     <!-- MA DEPENDENCE AVEC WEBPACK (J'AI  G-A-L-É-R-É...) -->
     <script src="<?=PATH?>/dist/bundle.js"></script>
+
     <!-- le joli pti menu! -->
     <?php
      $scriptJS = "<script>  
@@ -120,7 +121,6 @@ function SendAlert($msg, $alert, $info = null)
     ";
     echo "<script>" . $scriptJS . "</script>";
 }
-
 
 // trigger de ma fonction ou non..
 if(@$envoi){

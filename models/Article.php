@@ -12,14 +12,17 @@ class Article extends Model
 
 
     public function allArticles()
-    {
-        $sql = "SELECT article.*, NOM_MARQUE, NOM_COULEUR, NOM_TYPE 
-            FROM " . $this->table . " article
-            LEFT JOIN marque NOM_MARQUE ON article.ID_MARQUE = NOM_MARQUE.ID_MARQUE
-            LEFT JOIN couleur NOM_COULEUR ON article.ID_COULEUR = NOM_COULEUR.ID_COULEUR
-            LEFT JOIN typebiere NOM_TYPE ON article.ID_TYPE = NOM_TYPE.ID_TYPE 
-            ORDER BY article.ID_ARTICLE DESC
-            LIMIT 15";
+    {   // article.* = toute mes colonnes de ma table article 
+        // Ensuite je recupere 3 colonnes chacunes étant des colonnes étrangères (nom_marque,nom_couleur et nom_type)
+        //au niveau de mon premier join, je dis join la table étrangère 
+        //et dis que l'id_marque de ma table article doit correspondre à l'idmarque de ma table étrangère "marque" etc etc
+        $sql = "SELECT article.*, marque.NOM_MARQUE, couleur.NOM_COULEUR, typebiere.NOM_TYPE 
+        FROM article
+        LEFT JOIN marque ON article.ID_MARQUE = marque.ID_MARQUE 
+        LEFT JOIN couleur ON article.ID_COULEUR = couleur.ID_COULEUR
+        LEFT JOIN typebiere ON article.ID_TYPE = typebiere.ID_TYPE 
+        ORDER BY article.ID_ARTICLE DESC
+        LIMIT 15";
         $query = $this->_connexion->prepare($sql);
         $query->execute();
         return $query->fetchAll();
