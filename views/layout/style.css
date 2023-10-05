@@ -1,0 +1,58 @@
+* {
+    text-align: center;
+
+ }
+
+.custom-input {
+    border: 3px solid;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: beige !important;
+}
+
+.content {
+    flex: 1;
+    min-height: 86vh;
+
+}
+
+#displayForm {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.7s linear, height 0.7s linear;
+}
+
+#displayForm.visible {
+    opacity: 1;
+    height: auto;
+}
+
+input,
+select {
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+h1 {
+    color: darkblue;
+}
+
+header a {
+    margin: 0 5px;
+}
+.table-container {
+max-width: 100%; 
+margin: 0 auto; 
+overflow-x: auto; 
+}
+.btn-info:hover,
+.btn-danger:hover {
+transform: scale(1.2); 
+transition: transform 0.3s ease-in-out; 
+}
