@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?=PATH?>/views/layout/style.css">
+    <link rel="stylesheet" href="<?=PATH?>/views/layout/pagination.css">
+
     <!-- Youpii pas d'autres dépendences on respire un peu plus.. -->
 </head>
 
@@ -102,8 +104,9 @@
 <?php 
 function SendAlert($msg, $alert, $info = null)
 {
-    $scriptJS = "
+    $path = PATH."/articles";
 
+    $scriptJS = "
     Swal.fire({
         icon: '$alert', 
         title: '$info', 
@@ -116,9 +119,13 @@ function SendAlert($msg, $alert, $info = null)
         didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
             toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+        didClose: () => {
+            window.location.href = '$path'; // Utilisez la constante PATH ici
         }
     });
     ";
+
     echo "<script>" . $scriptJS . "</script>";
 }
 
