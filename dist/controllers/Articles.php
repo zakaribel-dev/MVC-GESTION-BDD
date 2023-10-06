@@ -111,7 +111,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->insert($article);
-            $this->redirectWithMessage("Article " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true);
+            $this->redirectWithMessage("Article " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true,'/articles');
         } else {
             header("Location: " . PATH . "/articles");
         }
@@ -142,7 +142,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->update($updatedArticle);
-            $this->redirectWithMessage("Article bien modifié", "success", "&#129299;", true);
+            $this->redirectWithMessage("Article bien modifié", "success", "&#129299;", true,"articles");
         } else {
             header("Location: " . PATH . "/edit");
         }
@@ -156,12 +156,13 @@ class Articles extends Controller
             'Article numéro ' . $id . ' a bien été supprimé',
             'danger',
             'Aurevoir petit article... &#128577;',
-            true
+            true,
+            'articles'
         );
     }
 
 
-    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false): void
+    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view = null): void
     {
 
         $this->loadModel("Article");
@@ -185,6 +186,7 @@ class Articles extends Controller
                 'allMarques',
                 'info',
                 'envoi',
+                'view'
             )
         );
     }

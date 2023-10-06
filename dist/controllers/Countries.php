@@ -18,7 +18,7 @@ class Countries extends Controller
         $btnId = "btnCountries";
         $this->loadModel("Country");
         $allContinents = $this->Country->allContinents();
-        $this->render('edit', compact('currentCountryId','allContinents', 'btnId'));
+        $this->render('edit', compact('currentCountryId', 'allContinents', 'btnId'));
     }
 
     public function newCountry(): void
@@ -29,9 +29,9 @@ class Countries extends Controller
             $newCountry['nom'] = $_POST['country'];
             $newCountry['id'] = $_POST['continent'];
             $this->Country->insert($newCountry);
-            $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success",'&#x1F44D;',true);
+            $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true,'countries');
         } else {
-            header("Location: " . PATH . "/counties");
+            header("Location: " . PATH . "/countries");
         }
     }
 
@@ -46,8 +46,8 @@ class Countries extends Controller
 
             $this->loadModel("Country");
             $this->Country->update($updatedCountry);
-            $this->redirectWithMessage('Pays bien modifié', 'info','&#129299;',true);
-        }else{
+            $this->redirectWithMessage('Pays bien modifié', 'info', '&#129299;', true,'countries');
+        } else {
             header("Location: " . PATH . "/countries");
         }
     }
@@ -56,15 +56,24 @@ class Countries extends Controller
     {
         $this->loadModel("Country");
         $this->Country->delete($id);
-        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'danger','Aurevoir petit pays... &#128577;',true);
+        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'danger', 'Aurevoir petit pays... &#128577;', true,'countries');
     }
 
-    private function redirectWithMessage($message, $type_message = null,$info=null,$envoi=false): void
+    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view=null): void
     {
         $this->loadModel("Country");
         $allCountries = $this->Country->allCountries();
         $allContinents = $this->Country->allContinents();
         $btnId = "btnCountries";
-        $this->render('index', compact('allCountries', 'message', 'allContinents', 'type_message', 'btnId','info','envoi'));
+        $this->render('index', compact(
+            'allCountries',
+            'message',
+            'allContinents',
+            'type_message',
+            'btnId',
+            'info',
+            'envoi',
+            'view'
+        ));
     }
 }

@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?=PATH?>/views/layout/style.css">
-    <link rel="stylesheet" href="<?=PATH?>/views/layout/pagination.css">
 
     <!-- Youpii pas d'autres dépendences on respire un peu plus.. -->
 </head>
@@ -102,9 +101,10 @@
 
  <!-- le déploiement de mes alertes sympatoches.. -->
 <?php 
-function SendAlert($msg, $alert, $info = null)
+function SendAlert($msg, $alert, $info = null,$view)
 {
-    $path = PATH."/articles";
+   
+    $path = PATH."/".$view;
 
     $scriptJS = "
     Swal.fire({
@@ -114,12 +114,8 @@ function SendAlert($msg, $alert, $info = null)
         toast: true,
         position: 'center',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-        },
         didClose: () => {
             window.location.href = '$path'; // Utilisez la constante PATH ici
         }
@@ -131,7 +127,7 @@ function SendAlert($msg, $alert, $info = null)
 
 // trigger de ma fonction ou non..
 if(@$envoi){
-     SendAlert($message,$type_message,$info);
+     SendAlert($message,$type_message,$info,$view);
 }else{
     echo "";
 }

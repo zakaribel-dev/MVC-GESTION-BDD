@@ -26,7 +26,7 @@ class Couleurs extends Controller
             $this->loadModel("Couleur");
             $newColor['nom'] = $_POST['couleur'];
             $this->Couleur->insert($newColor);
-            $this->redirectWithMessage("Couleur ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true);
+            $this->redirectWithMessage("Couleur ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true,"couleurs");
         } else {
             header("Location: " . PATH . "/couleurs");
         }
@@ -40,7 +40,7 @@ class Couleurs extends Controller
             $updatedColor['id'] =  $_POST['id'];
             $this->loadModel("Couleur");
             $this->Couleur->update($updatedColor);
-            $this->redirectWithMessage('Couleur bien modifiée', 'info','&#129299;',true);
+            $this->redirectWithMessage('Couleur bien modifiée', 'info','&#129299;',true,"couleurs");
         }
     }
 
@@ -48,11 +48,11 @@ class Couleurs extends Controller
     {
         $this->loadModel("Couleur");
         $this->Couleur->delete($id);
-        $this->redirectWithMessage('Couleur bien supprimée','danger','Aurevoir petite couleur... &#128577;',true);
+        $this->redirectWithMessage('Couleur bien supprimée','danger','Aurevoir petite couleur... &#128577;',true,"couleurs");
     }
 
 
-    private function redirectWithMessage($message, $type_message = null,$info = null, $envoi=false): void
+    private function redirectWithMessage($message, $type_message = null,$info = null, $envoi=false,$view =null): void
     {
         $this->loadModel("Couleur");
         $allColors = $this->Couleur->getAll();
@@ -63,7 +63,8 @@ class Couleurs extends Controller
           'type_message',
             'btnId',
              'info',
-              'envoi'
+              'envoi',
+              'view'
             ));
     }
 }

@@ -16,8 +16,7 @@ class Country extends Model
         $sql = "SELECT country.*, NOM_CONTINENT 
             FROM " . $this->table . " country
             INNER JOIN continent NOM_CONTINENT ON country.ID_CONTINENT = NOM_CONTINENT.ID_CONTINENT 
-            ORDER BY country.ID_PAYS DESC
-            LIMIT 10";
+            ORDER BY country.ID_PAYS DESC";
         $query = $this->_connexion->prepare($sql);
         $query->execute();
         return $query->fetchAll();
