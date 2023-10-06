@@ -6,7 +6,7 @@
 <div id="displayForm">
 <form action="<?= PATH ?>/Articles/newArticle" method="POST">
 <i>Pour cacher le formulaire d'ajout, cliquez une deuxieme fois sur le bouton "Ajouter"</i><br><br>
-
+    <input type="hidden" name="page" value="page">
     NOM : <input type="text" name="nom">   
     PRIX : <input type="number" name="prix"> 
     VOLUME : <input type="number" name="volume"> 
@@ -34,12 +34,31 @@
 
     <button type="submit" class="btn btn-dark">Valider</button>
  <br><br><br><br>
-
-
 </form> 
-
 </div>
-<div class="table-container">
+
+
+<div class="table-container"> 
+
+    <!-- PAGINATION DU HAUT-->
+    <?php
+    if(@$page == null) {
+        $page = 0;
+    }
+    ?>
+    <div class="pagination-container">
+        <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
+        <a href="<?= PATH ?>/articles/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
+        
+    <div class="page-numbers">
+    <?php for ($i = 1; $i <= 10; $i++): ?>
+        <a href="<?= PATH ?>/articles/index/<?= $i -1 ?>" class="pagination-btn <?= ($page == $i -1) ? 'active' : '' ?>"><?= $i ?></a>
+    <?php endfor ?>
+</div>    
+        <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
+        <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
+    </div> <br>
+    <!-- FIN PAGINATION DU HAUT  -->
 
 <table class="table table-success table-hover">
     <tr>
@@ -53,7 +72,6 @@
         <th>Couleur</th>
         <th>Actions</th>
     </tr>
-
     <?php foreach ($allArticles as $article) : ?>
         <tr>
             <td><?= $article['ID_ARTICLE'] ?></td>
@@ -74,5 +92,19 @@
     <?php endforeach ?>
 
     </table>
-
-    </div>
+        <!-- PAGINATION DU BAS-->
+    <div class="pagination-container">
+        <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
+        <a href="<?= PATH ?>/articles/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
+        
+    <div class="page-numbers">
+    <?php for ($i = 1; $i <= 10; $i++): ?>
+        <a href="<?= PATH ?>/articles/index/<?= $i -1 ?>" class="pagination-btn <?= ($page == $i -1) ? 'active' : '' ?>"><?= $i ?></a>
+    <?php endfor ?>
+</div>    
+        <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
+        <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
+    </div> <br>
+    <!-- FIN PAGINATION DU BAS  -->
+</div>
+</div>

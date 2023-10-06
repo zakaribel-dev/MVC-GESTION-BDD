@@ -18,7 +18,7 @@ class Countries extends Controller
         $btnId = "btnCountries";
         $this->loadModel("Country");
         $allContinents = $this->Country->allContinents();
-        $this->render('edit', compact('currentCountryId', 'allContinents', 'btnId'));
+        $this->render('edit', compact('currentCountryId','allContinents', 'btnId'));
     }
 
     public function newCountry(): void
@@ -31,7 +31,7 @@ class Countries extends Controller
             $this->Country->insert($newCountry);
             $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success",'&#x1F44D;',true);
         } else {
-            header("Location: " . PATH . "/countries");
+            header("Location: " . PATH . "/counties");
         }
     }
 
@@ -47,6 +47,8 @@ class Countries extends Controller
             $this->loadModel("Country");
             $this->Country->update($updatedCountry);
             $this->redirectWithMessage('Pays bien modifié', 'info','&#129299;',true);
+        }else{
+            header("Location: " . PATH . "/countries");
         }
     }
 

@@ -7,7 +7,7 @@
 <input type="hidden" name="id" value="<?= $currentCountryId;?>">
 
     Entrez un nouveau pays : <input type="text" name="updatedCountry"> 
-    <select name="updatedContinent" >
+    <select name="updatedContinent">
     <?php foreach ($allContinents as $continent): ?>
     <option value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
     <?php endforeach; ?>

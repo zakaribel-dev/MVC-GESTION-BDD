@@ -67,7 +67,7 @@
     </div>
 
     <!-- MA DEPENDENCE AVEC WEBPACK (J'AI  G-A-L-É-R-É...) -->
-    <script src="<?=PATH?>/dist/bundle.js"></script>
+    <script src="<?=PATH?>/views/js/bundle.js"></script>
 
     <!-- le joli pti menu! -->
     <?php

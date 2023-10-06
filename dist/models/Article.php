@@ -3,6 +3,9 @@
 class Article extends Model
 {
 
+    private $_start = 0;
+    private $_rowsPerPage = 10;
+
     public function __construct()
     {
         $this->table = "article";
@@ -10,23 +13,50 @@ class Article extends Model
         $this->getConnection();
     }
 
+    public function getStart()
+    {
+        return $this->_start;
+    }
+
+    public function getRowsPerPage()
+    {
+        return $this->_rowsPerPage;
+    }
+
+    public function setStart($start)
+    {
+        $this->_start = intval($start);
+    }
+
+    public function setRowsPerPage($rowsPerPage)
+    {
+        $this->_rowsPerPage = $rowsPerPage;
+    }
 
     public function allArticles()
-    {   // article.* = toute mes colonnes de ma table article 
-        // Ensuite je recupere 3 colonnes chacunes étant des colonnes étrangères (nom_marque,nom_couleur et nom_type)
-        //au niveau de mon premier join, je dis join la table étrangère 
-        //et dis que l'id_marque de ma table article doit correspondre à l'idmarque de ma table étrangère "marque" etc etc
-        $sql = "SELECT article.*, marque.NOM_MARQUE, couleur.NOM_COULEUR, typebiere.NOM_TYPE 
-        FROM article
-        LEFT JOIN marque ON article.ID_MARQUE = marque.ID_MARQUE 
-        LEFT JOIN couleur ON article.ID_COULEUR = couleur.ID_COULEUR
-        LEFT JOIN typebiere ON article.ID_TYPE = typebiere.ID_TYPE 
-        ORDER BY article.ID_ARTICLE DESC
-        LIMIT 15";
-        $query = $this->_connexion->prepare($sql);
-        $query->execute();
-        return $query->fetchAll();
+    {
+        $countSql = "SELECT COUNT(*) as nbr_articles FROM article";
+        $countQuery = $this->_connexion->prepare($countSql);
+        $countQuery->execute();
+        $countResult = $countQuery->fetch();
+
+
+        $mainSql = "SELECT article.*, marque.NOM_MARQUE, couleur.NOM_COULEUR, typebiere.NOM_TYPE 
+                    FROM article
+                    LEFT JOIN marque ON article.ID_MARQUE = marque.ID_MARQUE 
+                    LEFT JOIN couleur ON article.ID_COULEUR = couleur.ID_COULEUR
+                    LEFT JOIN typebiere ON article.ID_TYPE = typebiere.ID_TYPE 
+                    LIMIT " . $this->_start . "," . $this->_rowsPerPage;
+
+        $mainQuery = $this->_connexion->prepare($mainSql);
+        $mainQuery->execute();
+        $allArticles = $mainQuery->fetchAll();
+
+        $allArticles[0]['nbr_articles'] = $countResult['nbr_articles'];
+
+        return $allArticles;
     }
+
 
     public function allTypes()
     {
@@ -43,6 +73,13 @@ class Article extends Model
         return $query->fetchAll();
     }
 
+    public function articlesNumber()
+    {
+        $sql = "SELECT COUNT(*) FROM " . $this->table;
+        $query = $this->_connexion->prepare($sql);
+        $query->execute();
+        return $query->fetch();
+    }
 
     public function insert(array $article)
     {
@@ -88,6 +125,4 @@ class Article extends Model
         $query = $this->_connexion->prepare($sql);
         $query->execute([$id]);
     }
-
-  
 }

@@ -2,7 +2,7 @@
 
 class Articles extends Controller
 {
-    
+
     // je met en protected mes attr pour pouvoir les utiliser qu'à l'intérieur dla classe
     // ces attributs contiendront l'objet de la classe Article ou Couleur une fois que j'aurai load mon model
 
@@ -10,22 +10,61 @@ class Articles extends Controller
     protected Couleur $Couleur;
 
 
-    public function index(): void
+    public function index($page = null): void
     {
+        if (isset($page)) {
+            $this->loadModel("Article");
+            $rows_per_page = $this->Article->getRowsPerPage();
+            $this->Pagination($page, $rows_per_page);
+        }
         $this->loadModel("Article");
         $allArticles = $this->Article->allArticles();
+        $nbrArticles = $allArticles[0]['nbr_articles'];
+        $rows_per_page = $this->Article->getRowsPerPage();
+        $pages = ceil($nbrArticles / $rows_per_page);
         $allTypes = $this->Article->allTypes();
         $allMarques = $this->Article->AllMarques();
         $this->loadModel('Couleur');
         $allColors = $this->Couleur->getAll();
         $btnId = "btnArticles";
         $this->render('index', compact(
-         'allArticles',
-         'btnId',
-          'allColors',
-           'allTypes',
+            'allArticles',
+            'btnId',
+            'allColors',
+            'allTypes',
             'allMarques',
+            'pages',
+            'page'
         ));
+    }
+
+    public function Pagination($page, $rows_per_page)
+    {
+        $this->loadModel("Article");
+        $this->Article->setStart(intval($page) * $rows_per_page);
+
+        $allArticles = $this->Article->allArticles();
+        $rows_per_page = $this->Article->getRowsPerPage();
+        $start = $this->Article->getStart();
+        $this->Article->setStart($page);
+
+        $nbrArticles = $allArticles[0]['nbr_articles'];
+        $pages = ceil($nbrArticles / $rows_per_page);
+        $allTypes = $this->Article->allTypes();
+        $allMarques = $this->Article->AllMarques();
+        $this->loadModel('Couleur');
+        $allColors = $this->Couleur->getAll();
+        $btnId = "btnArticles";
+        $this->render('index', compact(
+            'allArticles',
+            'btnId',
+            'allColors',
+            'allTypes',
+            'allMarques',
+            'pages',
+            'page'
+        ));
+
     }
 
     public function edit(int $currentArticleId): void
@@ -38,13 +77,14 @@ class Articles extends Controller
         $allColors = $this->Couleur->getAll();
 
         $btnId = "btnArticles";
-        $this->render('edit', compact('currentArticleId',
-         'btnId',
-          'allArticles',
-           'allTypes',
+        $this->render('edit', compact(
+            'currentArticleId',
+            'btnId',
+            'allArticles',
+            'allTypes',
             'allMarques',
-             'allColors'
-            ));
+            'allColors',
+        ));
     }
 
     public function newArticle(): void
@@ -71,7 +111,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->insert($article);
-            $this->redirectWithMessage("Article ".$_POST['nom']." bien ajouté", "success","&#x1F44D;", true);
+            $this->redirectWithMessage("Article " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true);
         } else {
             header("Location: " . PATH . "/articles");
         }
@@ -102,7 +142,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->update($updatedArticle);
-            $this->redirectWithMessage("Article bien modifié", "success", "&#129299;",true);
+            $this->redirectWithMessage("Article bien modifié", "success", "&#129299;", true);
         } else {
             header("Location: " . PATH . "/edit");
         }
@@ -113,17 +153,17 @@ class Articles extends Controller
         $this->loadModel("Article");
         $this->Article->delete($id);
         $this->redirectWithMessage(
-       'Article numéro ' . $id . ' a bien été supprimé',
-         'danger',
-          'Aurevoir petit article... &#128577;',
+            'Article numéro ' . $id . ' a bien été supprimé',
+            'danger',
+            'Aurevoir petit article... &#128577;',
             true
         );
     }
 
 
-    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi=false): void
+    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false): void
     {
-        
+
         $this->loadModel("Article");
         $allArticles = $this->Article->allArticles();
         $allTypes = $this->Article->allTypes();
@@ -144,7 +184,7 @@ class Articles extends Controller
                 'allTypes',
                 'allMarques',
                 'info',
-                'envoi'
+                'envoi',
             )
         );
     }
