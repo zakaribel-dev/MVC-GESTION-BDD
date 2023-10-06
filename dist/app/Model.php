@@ -1,9 +1,9 @@
 <?php
 abstract class Model{
     private $host = "localhost";
-    private $db_name = "agagagag";
-    private $username = "tauras pas l'username";
-    private $password = "tauras pas le mdp";
+    private $db_name = "sdbm_v2";
+    private $username = "root";
+    private $password = "";
      
     protected $_connexion;
 
