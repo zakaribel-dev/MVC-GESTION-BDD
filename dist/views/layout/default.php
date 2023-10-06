@@ -18,14 +18,17 @@
                 <a href="<?= PATH ?>/home"><br>
                     <button id="btnHome" class="btn">Accueil</button>
                 </a>
-                <a class="" href="<?= PATH ?>/couleurs"><br>
-                    <button id="btnCouleurs" class="btn">Couleurs</button>
-                </a>
+
                 <a class="" href="<?= PATH ?>/articles"><br>
                     <button id="btnArticles" class="btn ">Articles</button>
                 </a>
+
                 <a class="" href="<?= PATH ?>/countries"><br>
                     <button id="btnCountries" class="btn ">Pays</button>
+                </a>
+                
+                <a class="" href="<?= PATH ?>/couleurs"><br>
+                    <button id="btnCouleurs" class="btn">Couleurs</button>
                 </a>
             </div>
     </header>
