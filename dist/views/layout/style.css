@@ -1,6 +1,5 @@
 * {
     text-align: center;
-
  }
 
 .custom-input {
@@ -12,13 +11,12 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: beige !important;
+    background-color: #dbd090 !important;
 }
 
 .content {
     flex: 1;
-    min-height: 86vh;
-
+    min-height: 60vh;
 }
 
 #displayForm {
@@ -40,17 +38,17 @@ select {
 }
 
 h1 {
-    color: darkblue;
+    color: #17A2B8;
 }
 
 header a {
     margin: 0 5px;
 }
 .table-container {
-max-width: 100%; 
-margin: 0 auto; 
-overflow-x: auto; 
-}
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+ }
 .btn-info:hover,
 .btn-danger:hover {
 transform: scale(1.2); 
@@ -67,7 +65,8 @@ transition: transform 0.3s ease-in-out;
     display: inline-block;
     padding: 10px 15px;
     margin: 0 5px;
-    background-color: #355a84;
+    height: 50px;
+    background-color: #17A2B8;
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
@@ -91,6 +90,9 @@ transition: transform 0.3s ease-in-out;
 body .pagination-btn {
     border: 3px solid rgb(155, 223, 155);
 }
+
+
+
 @media only screen and (max-width: 600px) {
     .pagination-container {
         width: 100%;
@@ -105,6 +107,7 @@ body .pagination-btn {
     .pagination-btn {
         font-size: 16px;
         padding: 8px 12px; 
-        height: auto; 
+        height: 50px; 
     }
 }
+

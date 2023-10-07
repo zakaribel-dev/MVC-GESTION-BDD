@@ -39,7 +39,6 @@
 
 
 <div class="table-container"> 
-
     <!-- PAGINATION DU HAUT-->
     <?php
     if(@$page == null) {
@@ -49,12 +48,17 @@
     <div class="pagination-container">
         <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
         <a href="<?= PATH ?>/articles/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
-        
-    <div class="page-numbers">
-    <?php for ($i = 1; $i <= 10; $i++): ?>
-        <a href="<?= PATH ?>/articles/index/<?= $i -1 ?>" class="pagination-btn <?= ($page == $i -1) ? 'active' : '' ?>"><?= $i ?></a>
-    <?php endfor ?>
-</div>    
+
+    <?php if($page != null): ?>
+        <nav aria-label="Page navigation">
+            <ul class="pagination p-2">
+                <li class="page-item">
+                    <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                </li>
+            </ul>
+        </nav>
+    <?php endif; ?>
+
         <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
         <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
     </div> <br>
@@ -90,21 +94,26 @@
             </td>
         </tr>
     <?php endforeach ?>
-
     </table>
+
         <!-- PAGINATION DU BAS-->
-    <div class="pagination-container">
+        <div class="pagination-container">
         <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
         <a href="<?= PATH ?>/articles/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
         
-    <div class="page-numbers">
-    <?php for ($i = 1; $i <= 10; $i++): ?>
-        <a href="<?= PATH ?>/articles/index/<?= $i -1 ?>" class="pagination-btn <?= ($page == $i -1) ? 'active' : '' ?>"><?= $i ?></a>
-    <?php endfor ?>
-</div>    
+    <?php if($page != null): ?>
+        <nav aria-label="Page navigation">
+            <ul class="pagination p-2">
+                <li class="page-item">
+                    <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                </li>
+            </ul>
+        </nav>
+    <?php endif; ?>
+
         <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
         <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
-    </div> <br>
+    </div> 
     <!-- FIN PAGINATION DU BAS  -->
 </div>
 </div>

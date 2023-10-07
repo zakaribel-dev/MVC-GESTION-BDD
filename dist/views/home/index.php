@@ -1,4 +1,3 @@
-
 <br><br><br><br>
 
 <h1 class="display-3">Mes belles bières...</h1>
