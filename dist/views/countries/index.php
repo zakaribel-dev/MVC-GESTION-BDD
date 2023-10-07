@@ -28,13 +28,13 @@ if (@$pages == null) {
 }
 ?>
 <div class="pagination-container">
-<a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<< </a>
-<a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><< </a>
+<a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><< </a>
+<a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> ">< </a>
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination p-2">
                             <li class="page-item">
-                                <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                                <span class="page-link"> <b>Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></b></span>
                             </li>
                         </ul>
                     </nav>
@@ -75,15 +75,13 @@ if (@$pages == null) {
 
 <!-- PAGINATION DU BAS-->
 <div class="pagination-container">
-    <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>">
-        <<< /a>
-            <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> ">
-                << /a>
+<a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"> << </a>
+<a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination p-2">
                             <li class="page-item">
-                                <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                            <span class="page-link"> <b>Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></b></span>
                             </li>
                         </ul>
                     </nav>

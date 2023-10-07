@@ -53,7 +53,7 @@
         <nav aria-label="Page navigation">
             <ul class="pagination p-2">
                 <li class="page-item">
-                    <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                <span class="page-link"> <b>Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></b></span>
                 </li>
             </ul>
         </nav>
@@ -107,7 +107,7 @@
         <nav aria-label="Page navigation">
             <ul class="pagination p-2">
                 <li class="page-item">
-                    <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                <span class="page-link"> <b>Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></b></span>
                 </li>
             </ul>
         </nav>
