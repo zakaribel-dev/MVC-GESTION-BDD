@@ -37,10 +37,8 @@
 </form> 
 </div>
 
-
-<div class="table-container"> 
-    <!-- PAGINATION DU HAUT-->
-    <?php
+ <!-- PAGINATION DU HAUT-->
+ <?php
     if(@$page == null) {
         $page = 0;
     }
@@ -64,6 +62,7 @@
     </div> <br>
     <!-- FIN PAGINATION DU HAUT  -->
 
+<div class="table-container"> 
 <table class="table table-success table-hover">
     <tr>
         <th>Code</th>
@@ -96,11 +95,19 @@
     <?php endforeach ?>
     </table>
 
-        <!-- PAGINATION DU BAS-->
-        <div class="pagination-container">
+      
+</div>
+</div>
+ <!-- PAGINATION DU HAUT-->
+ <?php
+    if(@$page == null) {
+        $page = 0;
+    }
+    ?>
+    <div class="pagination-container">
         <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
         <a href="<?= PATH ?>/articles/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
-        
+
     <?php if($page != null): ?>
         <nav aria-label="Page navigation">
             <ul class="pagination p-2">
@@ -113,7 +120,5 @@
 
         <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
         <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
-    </div> 
-    <!-- FIN PAGINATION DU BAS  -->
-</div>
-</div>
+    </div> <br>
+    <!-- FIN PAGINATION DU HAUT  -->

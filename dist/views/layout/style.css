@@ -109,5 +109,15 @@ body .pagination-btn {
         padding: 8px 12px; 
         height: 50px; 
     }
+
+    #displayForm {
+        max-width: 100%;
+    }
+
+    input, select, button {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
 }
 
