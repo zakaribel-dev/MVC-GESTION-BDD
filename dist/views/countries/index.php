@@ -28,10 +28,8 @@ if (@$pages == null) {
 }
 ?>
 <div class="pagination-container">
-    <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>">
-        <<< /a>
-            <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> ">
-                << /a>
+<a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<< </a>
+<a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><< </a>
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination p-2">
