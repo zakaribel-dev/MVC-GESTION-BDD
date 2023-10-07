@@ -4,7 +4,7 @@
 class Country extends Model
 {
     private $_start = 0;
-    private $_rowsPerPage = 5;
+    private $_rowsPerPage = 10;
 
     public function __construct()
     {
@@ -49,14 +49,13 @@ class Country extends Model
             ORDER BY country.ID_PAYS ASC
             LIMIT " . $this->_start . "," . $this->_rowsPerPage;
 
-            $mainQuery = $this->_connexion->prepare($mainSql);
-            $mainQuery->execute();
-            $allCountries = $mainQuery->fetchAll();
-    
-            $allCountries[0]['nbr_countries'] = $countResult['nbr_countries'];
-    
-            return $allCountries;
+        $mainQuery = $this->_connexion->prepare($mainSql);
+        $mainQuery->execute();
+        $allCountries = $mainQuery->fetchAll();
 
+        $allCountries[0]['nbr_countries'] = $countResult['nbr_countries'];
+
+        return $allCountries;
     }
 
     public function allContinents()
@@ -73,19 +72,18 @@ class Country extends Model
         $sql = "INSERT INTO " . $this->table . "(NOM_PAYS,ID_CONTINENT) 
             VALUES (?,?)";
         $query = $this->_connexion->prepare($sql);
-        $query->execute([$newCountry['nom'],$newCountry['id']]);
-
+        $query->execute([$newCountry['nom'], $newCountry['id']]);
     }
-    
+
 
     public function update(array $updatedCountry)
     {
         $sql = "UPDATE " . $this->table . " set NOM_PAYS=?, ID_CONTINENT=? WHERE ID_PAYS=?";
         $query = $this->_connexion->prepare($sql);
         $query->execute([
-         $updatedCountry['updatedCountry'],
-         intval($updatedCountry['idContinent']),
-         intval($updatedCountry['idCountry'])
+            $updatedCountry['updatedCountry'],
+            intval($updatedCountry['idContinent']),
+            intval($updatedCountry['idCountry'])
         ]);
     }
 
@@ -96,6 +94,4 @@ class Country extends Model
         $query = $this->_connexion->prepare($sql);
         $query->execute([$id]);
     }
-
-
 }

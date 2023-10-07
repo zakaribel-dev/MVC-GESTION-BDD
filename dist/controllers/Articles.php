@@ -64,7 +64,6 @@ class Articles extends Controller
             'pages',
             'page'
         ));
-
     }
 
     public function edit(int $currentArticleId): void
@@ -111,7 +110,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->insert($article);
-            $this->redirectWithMessage("Article " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true,'/articles');
+            $this->redirectWithMessage("Article " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true, '/articles');
         } else {
             header("Location: " . PATH . "/articles");
         }
@@ -142,7 +141,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->update($updatedArticle);
-            $this->redirectWithMessage("Article bien modifié", "success", "&#129299;", true,"articles");
+            $this->redirectWithMessage("Article bien modifié", "success", "&#129299;", true, "articles");
         } else {
             header("Location: " . PATH . "/edit");
         }
