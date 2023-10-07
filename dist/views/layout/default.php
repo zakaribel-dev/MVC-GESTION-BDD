@@ -31,17 +31,7 @@
                 </a>
             </div>
         </header>
-        <?php
-        if (isset($message)) {
-            if (!isset($type_message)) {
-                $type_message = "info";
-            }
-            echo "<br><div class='alert alert-$type_message alert-dismissible'>
-                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                    $message
-                </div>";
-        }
-        ?>
+
         <div class="content ">
             <?= $content ?>
         </div>
@@ -59,13 +49,13 @@
                 </section>
             </div>
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2023 Copyright :
+                © 2023 :
                 <a class="text-white" href="https://zakaribel.com" target="blank">zakaribel.com</a>
             </div>
         </footer>
 
 
-    <!-- MA DEPENDENCE AVEC WEBPACK (J'AI  G-A-L-É-R-É...) -->
+    <!-- MA DEPENDENCE AVEC WEBPACK -->
     <script src="<?= PATH ?>/views/js/bundle.js"></script>
 
     <!-- le joli pti menu! -->
@@ -112,7 +102,7 @@
         toast: true,
         position: 'center',
         showConfirmButton: false,
-        timer: 2000,
+        timer: 3200,
         timerProgressBar: true,
         didClose: () => {
             window.location.href = '$path'; // Utilisez la constante PATH ici

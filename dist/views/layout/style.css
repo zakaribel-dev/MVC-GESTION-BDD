@@ -38,7 +38,7 @@ select {
 }
 
 h1 {
-  color: #17a2b8;
+  color: black;
 }
 
 header a {
@@ -61,15 +61,21 @@ header a {
   margin-top: 20px;
 }
 
+.page-info {
+  color: #000000;
+  padding: 0.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  text-align: center;
+}
 .pagination-btn {
   display: inline-block;
   padding: 10px 15px;
   margin: 0 5px;
-  height: 50px;
+  height: 45px;
   background-color: #17a2b8;
-  color: #ffffff;
+  color: #dbd090;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 15px ;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -78,18 +84,13 @@ header a {
   pointer-events: none;
 }
 
-.pagination-btn.active {
-  background-color: green;
-}
-
 .pagination-btn:hover {
   color: white;
   background-color: #2a475f;
+  text-decoration: none;
 }
 
-body .pagination-btn {
-  border: 3px solid rgb(155, 223, 155);
-}
+
 
 @media only screen and (max-width: 600px) {
   .pagination-container {
