@@ -3,6 +3,8 @@
 
 class Country extends Model
 {
+    private $_start = 0;
+    private $_rowsPerPage = 5;
 
     public function __construct()
     {
@@ -11,15 +13,50 @@ class Country extends Model
         $this->getConnection();
     }
 
+    public function getStart()
+    {
+        return $this->_start;
+    }
+
+    public function getRowsPerPage()
+    {
+        return $this->_rowsPerPage;
+    }
+
+    public function setStart($start)
+    {
+        $this->_start = intval($start);
+    }
+
+    public function setRowsPerPage($rowsPerPage)
+    {
+        $this->_rowsPerPage = $rowsPerPage;
+    }
+
+
     public function allCountries()
     {
-        $sql = "SELECT country.*, NOM_CONTINENT 
+
+        $countSql = "SELECT COUNT(*) as nbr_countries FROM pays";
+        $countQuery = $this->_connexion->prepare($countSql);
+        $countQuery->execute();
+        $countResult = $countQuery->fetch();
+
+
+        $mainSql = "SELECT country.*, NOM_CONTINENT 
             FROM " . $this->table . " country
             INNER JOIN continent NOM_CONTINENT ON country.ID_CONTINENT = NOM_CONTINENT.ID_CONTINENT 
-            ORDER BY country.ID_PAYS DESC";
-        $query = $this->_connexion->prepare($sql);
-        $query->execute();
-        return $query->fetchAll();
+            ORDER BY country.ID_PAYS ASC
+            LIMIT " . $this->_start . "," . $this->_rowsPerPage;
+
+            $mainQuery = $this->_connexion->prepare($mainSql);
+            $mainQuery->execute();
+            $allCountries = $mainQuery->fetchAll();
+    
+            $allCountries[0]['nbr_countries'] = $countResult['nbr_countries'];
+    
+            return $allCountries;
+
     }
 
     public function allContinents()

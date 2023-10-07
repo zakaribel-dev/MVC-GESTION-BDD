@@ -16,8 +16,37 @@
 </form>
 <br>
 </div>
-<div class="table-container">
 
+
+ <!-- PAGINATION DU HAUT-->
+ <?php
+    if(@$page == null) {
+        $page = 0;
+    }
+    if(@$pages == null){
+        $pages = 1;
+    }
+    ?>
+    <div class="pagination-container">
+        <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
+        <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination p-2">
+                <li class="page-item">
+                    <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                </li>
+            </ul>
+        </nav>
+
+        <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
+        <a href="<?= PATH ?>/countries/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
+    </div> <br>
+    <!-- FIN PAGINATION DU HAUT  -->
+
+
+
+<div class="table-container">
 <table class="table table-success table-hover">
     <tr>
         <th>Code</th>
@@ -43,3 +72,22 @@
     </table>
 
     </div>
+
+     <!-- PAGINATION DU BAS-->
+     <div class="pagination-container">
+        <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><<</a>
+        <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><</a>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination p-2">
+                <li class="page-item">
+                    <span class="page-link">Page <?php echo $page + 1; ?> sur <?php echo $pages; ?></span>
+                </li>
+            </ul>
+        </nav>
+
+
+        <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">></a>
+        <a href="<?= PATH ?>/countries/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>">>></a>
+    </div> <br>
+    <!-- FIN PAGINATION DU BAS  -->

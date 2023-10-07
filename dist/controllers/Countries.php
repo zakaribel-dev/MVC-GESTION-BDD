@@ -4,13 +4,49 @@ class Countries extends Controller
 {
     protected Country $Country;
 
-    public function index(): void
+    public function index($page = null): void
     {
+        if (isset($page)) {
+            $this->loadModel("Country");
+            $rows_per_page = $this->Country->getRowsPerPage();
+            $this->Pagination($page, $rows_per_page);
+        }
         $this->loadModel("Country");
         $allCountries = $this->Country->allCountries();
+        $nbrCountries = $allCountries[0]['nbr_countries'];
         $allContinents = $this->Country->allContinents();
+        $rows_per_page = $this->Country->getRowsPerPage();
+        $pages = ceil($nbrCountries / $rows_per_page);
         $btnId = "btnCountries";
-        $this->render('index', compact('allCountries', 'btnId', 'allContinents'));
+        $this->render('index', compact(
+            'allCountries',
+            'btnId',
+            'allContinents',
+            'page',
+            'pages'
+        ));
+    }
+
+
+    public function Pagination($page, $rows_per_page)
+    {
+        $this->loadModel("Country");
+        $this->Country->setStart(intval($page) * $rows_per_page);
+        $allContinents = $this->Country->allContinents();
+        $allCountries = $this->Country->allCountries();
+        $rows_per_page = $this->Country->getRowsPerPage();
+        $start = $this->Country->getStart();
+        $this->Country->setStart($page);
+        $nbrCountries = $allCountries[0]['nbr_countries'];
+        $pages = ceil($nbrCountries / $rows_per_page);
+        $btnId = "btnCountries";
+        $this->render('index', compact(
+            'allCountries',
+            'btnId',
+            'allContinents',
+            'pages',
+            'page'
+        ));
     }
 
     public function edit(int $currentCountryId)
@@ -29,7 +65,7 @@ class Countries extends Controller
             $newCountry['nom'] = $_POST['country'];
             $newCountry['id'] = $_POST['continent'];
             $this->Country->insert($newCountry);
-            $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true,'countries');
+            $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true, 'countries');
         } else {
             header("Location: " . PATH . "/countries");
         }
@@ -46,7 +82,7 @@ class Countries extends Controller
 
             $this->loadModel("Country");
             $this->Country->update($updatedCountry);
-            $this->redirectWithMessage('Pays bien modifié', 'info', '&#129299;', true,'countries');
+            $this->redirectWithMessage('Pays bien modifié', 'info', '&#129299;', true, 'countries');
         } else {
             header("Location: " . PATH . "/countries");
         }
@@ -56,10 +92,10 @@ class Countries extends Controller
     {
         $this->loadModel("Country");
         $this->Country->delete($id);
-        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'danger', 'Aurevoir petit pays... &#128577;', true,'countries');
+        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'danger', 'Aurevoir petit pays... &#128577;', true, 'countries');
     }
 
-    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view=null): void
+    private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view = null): void
     {
         $this->loadModel("Country");
         $allCountries = $this->Country->allCountries();
