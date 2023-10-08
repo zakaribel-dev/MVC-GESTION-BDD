@@ -71,14 +71,14 @@ if (@$pages == null) {
 
 <!-- PAGINATION DU BAS-->
 <div class="pagination-container">
-        <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
-        <a href="<?= PATH ?>/articles/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><i class="fa-solid fa-angle-left"></i></a>
+        <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><i class="fa-solid fa-angle-left"></i></a>
 
         <div class="page-info">
        Page <?php echo $page + 1; ?> sur <?php echo $pages; ?>
     </div>
 
-        <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
-        <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
+        <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
+        <a href="<?= PATH ?>/countries/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
     </div> <br>
 <!-- FIN PAGINATION DU BAS  -->
