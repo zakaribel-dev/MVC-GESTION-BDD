@@ -9,50 +9,51 @@
 
     <!-- Youpii pas d'autres dépendences on respire un peu plus.. -->
 </head>
+
 <body>
     <?php echo @$msg; ?>
 
-        <header>
-            <div class="d-flex justify-content-center">
-                <a href="<?= PATH ?>/home"><br>
-                    <button id="btnHome" class="btn">Accueil</button>
-                </a>
+    <header>
+        <div class="d-flex justify-content-center">
+            <a href="<?= PATH ?>/home"><br>
+                <button id="btnHome" class="btn">Accueil</button>
+            </a>
 
-                <a class="" href="<?= PATH ?>/articles"><br>
-                    <button id="btnArticles" class="btn ">Articles</button>
-                </a>
+            <a class="" href="<?= PATH ?>/articles"><br>
+                <button id="btnArticles" class="btn ">Articles</button>
+            </a>
 
-                <a class="" href="<?= PATH ?>/countries"><br>
-                    <button id="btnCountries" class="btn ">Pays</button>
-                </a>
+            <a class="" href="<?= PATH ?>/countries"><br>
+                <button id="btnCountries" class="btn ">Pays</button>
+            </a>
 
-                <a class="" href="<?= PATH ?>/couleurs"><br>
-                    <button id="btnCouleurs" class="btn">Couleurs</button>
-                </a>
-            </div>
-        </header>
-
-        <div class="content ">
-            <?= $content ?>
+            <a class="" href="<?= PATH ?>/couleurs"><br>
+                <button id="btnCouleurs" class="btn">Couleurs</button>
+            </a>
         </div>
+    </header>
 
-        <footer class="bg-secondary text-center text-white mt-5">
-            <div class="container-fluid p-4">
-                <section class="mb-4">
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/zakaribel-dev" target="blank" role="button"><i class="fab fa-github"> Github</i></a>
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://discord.com/users/Zak#8199" target="blank" role="button"><i class="fab fa-discord"> Discord</i></a>
-                </section>
-                <section class="mb-4">
-                    <p>
-                        L'abus d'alcool est dangereux pour la santé mais... Si vous aimez le vin... <a href="https://zakaribel.com/cave/html/VINS.html" target="blank" style="color: yellow;">cliquez ici..</a>
-                    </p>
-                </section>
-            </div>
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2023 :
-                <a class="text-white" href="https://zakaribel.com" target="blank">zakaribel.com</a>
-            </div>
-        </footer>
+    <div class="content ">
+        <?= $content ?>
+    </div>
+
+    <footer class="bg-secondary text-center text-white mt-5">
+        <div class="container-fluid p-4">
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/zakaribel-dev" target="blank" role="button"><i class="fab fa-github"> Github</i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://discord.com/users/Zak#8199" target="blank" role="button"><i class="fab fa-discord"> Discord</i></a>
+            </section>
+            <section class="mb-4">
+                <p>
+                    L'abus d'alcool est dangereux pour la santé mais... Si vous aimez le vin... <a href="https://zakaribel.com/cave/html/VINS.html" target="blank" style="color: yellow;">cliquez ici..</a>
+                </p>
+            </section>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 :
+            <a class="text-white" href="https://zakaribel.com" target="blank">zakaribel.com</a>
+        </div>
+    </footer>
 
 
     <!-- MA DEPENDENCE AVEC WEBPACK -->
@@ -78,13 +79,24 @@
     ?>
 
 
-    <!-- mon pti formulaire qui apparait comme par magie..  -->
+    <!-- mon pti formulaire & mon petit titre de ma home page qui apparaissent comme par magie..  -->
     <script>
         function afficherFormulaire() {
             let formulaire = document.getElementById("displayForm");
             formulaire.classList.toggle("visible");
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let paragraph = document.querySelector('.paragraph');
+            paragraph.classList.add('appear');
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let mbb = document.querySelector('.mbb');
+            mbb.classList.add('appear');
+        });
     </script>
+
 
 
     <!-- le déploiement de mes alertes sympatoches.. -->

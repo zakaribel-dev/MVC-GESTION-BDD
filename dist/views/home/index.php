@@ -7,7 +7,7 @@
         </div>
     </div>
     <br><br>
-    <div class="row">
+    <div class="row paragraph">
         <div class="col-12">
             <h5>Bienvenue à toi. <br><br>
                 Sers-toi donc du menu situé en haut de la page pour naviguer dans ce fabuleux gestionnaire de BIERES. <br><br>
