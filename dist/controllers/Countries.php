@@ -92,7 +92,7 @@ class Countries extends Controller
     {
         $this->loadModel("Country");
         $this->Country->delete($id);
-        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'danger', 'Aurevoir petit pays... &#128577;', true, 'countries');
+        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'warning', 'Aurevoir petit pays... &#128577;', true, 'countries');
     }
 
     private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view = null): void

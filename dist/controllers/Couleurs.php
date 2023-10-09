@@ -24,6 +24,7 @@ class Couleurs extends Controller
         $newColor = array();
         if (!empty($_POST['couleur'])) {
             $this->loadModel("Couleur");
+            htmlentities($_POST['couleur']);
             $newColor['nom'] = $_POST['couleur'];
             $this->Couleur->insert($newColor);
             $this->redirectWithMessage("Couleur ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true,"couleurs");
@@ -36,6 +37,8 @@ class Couleurs extends Controller
     {   
         $updatedColor = array();
         if (!empty($_POST['updatedColor'])) {
+            htmlentities($_POST['updatedColor']);
+            htmlentities($_POST['id']);
             $updatedColor['nom'] = $_POST['updatedColor'];
             $updatedColor['id'] =  $_POST['id'];
             $this->loadModel("Couleur");
@@ -47,8 +50,8 @@ class Couleurs extends Controller
     public function deleteColor(int $id): void
     {
         $this->loadModel("Couleur");
-        $this->Couleur->delete($id);
-        $this->redirectWithMessage('Couleur bien supprimée','danger','Aurevoir petite couleur... &#128577;',true,"couleurs");
+        $this->Couleur->delete(htmlentities($id));  
+        $this->redirectWithMessage('Couleur bien supprimée','warning','Aurevoir petite couleur... &#128577;',true,"couleurs");
     }
 
 

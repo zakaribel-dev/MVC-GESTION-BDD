@@ -153,7 +153,7 @@ class Articles extends Controller
         $this->Article->delete($id);
         $this->redirectWithMessage(
             'Article numéro ' . $id . ' a bien été supprimé',
-            'danger',
+            'warning',
             'Aurevoir petit article... &#128577;',
             true,
             'articles'
