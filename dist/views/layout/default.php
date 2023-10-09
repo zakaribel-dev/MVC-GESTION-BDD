@@ -95,6 +95,10 @@
             let mbb = document.querySelector('.mbb');
             mbb.classList.add('appear');
         });
+        document.addEventListener("DOMContentLoaded", function() {
+            let mbb = document.querySelector('.beer');
+            mbb.classList.add('appear');
+        });
     </script>
 
 

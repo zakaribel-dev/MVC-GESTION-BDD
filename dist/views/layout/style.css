@@ -64,7 +64,8 @@ header a {
 .page-info {
   color: #000000;
   padding: 0.5rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   text-align: center;
 }
 .pagination-btn {
@@ -75,7 +76,7 @@ header a {
   background-color: #17a2b8;
   color: #dbd090;
   text-decoration: none;
-  border-radius: 15px ;
+  border-radius: 15px;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -90,14 +91,14 @@ header a {
   text-decoration: none;
 }
 
-.beer{
+.beer {
   display: none;
 }
 
 .paragraph {
-  opacity: 0; 
-  transform: translateY(25px); 
-  transition: opacity 2s, transform 2s; 
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 2s, transform 2s;
   color: black;
   line-height: 27px;
   text-transform: uppercase;
@@ -107,7 +108,7 @@ header a {
 
 .mbb {
   opacity: 0;
-  transform: translateY(-100%); 
+  transform: translateY(-100%);
   transition: opacity 2s, transform 2s;
 }
 
@@ -116,7 +117,6 @@ header a {
   transform: translateY(0);
 }
 
-
 @media only screen and (max-width: 600px) {
   .pagination-container {
     width: 100%;
@@ -124,12 +124,19 @@ header a {
     text-align: center;
   }
 
-  .mbb{
-    display:none;
+  .mbb {
+    display: none;
   }
 
-  .beer{
+  .beer {
     display: block;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 2s, transform 2s;
+  }
+  .appear {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .page-numbers {
