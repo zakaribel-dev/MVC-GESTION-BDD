@@ -62,8 +62,8 @@ class Countries extends Controller
         $newCountry = array();
         if (!empty($_POST['country'])) {
             $this->loadModel("Country");
-            $newCountry['nom'] = $_POST['country'];
-            $newCountry['id'] = $_POST['continent'];
+            $newCountry['nom'] = htmlentities($_POST['country']);
+            $newCountry['id'] = htmlentities($_POST['continent']);
             $this->Country->insert($newCountry);
             $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true, 'countries');
         } else {
@@ -91,8 +91,13 @@ class Countries extends Controller
     public function deleteCountry(int $id): void
     {
         $this->loadModel("Country");
-        $this->Country->delete($id);
-        $this->redirectWithMessage('Pays numéro ' . $id . ' bien supprimé', 'warning', 'Aurevoir petit pays... &#128577;', true, 'countries');
+        $this->Country->delete(htmlentities($id));
+        $this->redirectWithMessage(
+        'Pays numéro ' . $id . ' bien supprimé',
+         'warning',
+          'Aurevoir petit pays... &#128577;',
+           true,
+            'countries');
     }
 
     private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view = null): void
