@@ -81,28 +81,16 @@
 
     <!-- mon pti formulaire & mes petits titres qui apparaissent comme par magie..  -->
     <script>
-     function afficherFormulaire(idFormulaire) {
-    let formulaire = document.getElementById(idFormulaire);
-    
-    if (formulaire) {
-        formulaire.classList.toggle("visible");
-    } 
-}
+        function afficherFormulaire(idFormulaire) {
+            let formulaire = document.getElementById(idFormulaire);
 
+            if (formulaire) {
+                formulaire.classList.toggle("visible");
+            }
+        }
         document.addEventListener("DOMContentLoaded", function() {
             let paragraph = document.querySelector('.paragraph');
             paragraph.classList.add('appear');
-            function afficherFormulaire() {
-            let formulaireCouleurs = document.getElementById("displayFormColor");
-            let formulaireArticles = document.getElementById("displayForm");
-            let formulairePays = document.getElementById("displayFormCountries");
-
-            formulaireCouleurs.classList.toggle("visible");
-            formulaireArticles.classList.toggle("visible");
-            formulairePays.classList.toggle("visible");
-
-        }
-
         });
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -113,7 +101,6 @@
             let beer = document.querySelector('.beer');
             beer.classList.add('appear');
         });
-    
     </script>
 
 
