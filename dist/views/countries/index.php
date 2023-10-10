@@ -17,7 +17,6 @@
     <br>
 </div>
 
-
 <!-- PAGINATION DU HAUT-->
 
 
@@ -33,8 +32,6 @@
         <a href="<?= PATH ?>/countries/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
     </div> <br>
 <!-- FIN PAGINATION DU HAUT  -->
-
-
 
 <div class="table-container">
     <table class="table table-success table-hover">
@@ -60,7 +57,6 @@
         <?php endforeach ?>
 
     </table>
-
 </div>
 
 <!-- PAGINATION DU BAS-->
