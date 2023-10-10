@@ -134,6 +134,18 @@ header a {
     text-align: center;
   }
 
+  
+#displayForm.visible {
+  opacity: 1;
+  height: 520px;
+}
+
+#displayFormColor.visible,
+#displayFormCountries.visible {
+  opacity: 1;
+  height: 150px;
+}
+
   .mbb {
     display: none;
   }
@@ -173,6 +185,17 @@ header a {
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
+  }
+
+  #displayForm.visible {
+    opacity: 1;
+    height: 500px;
+  }
+  
+  #displayFormColor.visible,
+  #displayFormCountries.visible {
+    opacity: 1;
+    height: 150px;
   }
 
   .mbb {
