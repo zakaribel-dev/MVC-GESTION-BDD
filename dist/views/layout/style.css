@@ -169,7 +169,9 @@ header a {
   .mbb {
     display: none;
   }
-
+.table{
+  margin-top: 5%;
+}
   .beer {
     display: block;
     opacity: 0;
@@ -203,5 +205,7 @@ header a {
    min-height: 20vh;
   }
 
-
+ .paragraph{
+  margin-top: 30%;
+ }
 }
