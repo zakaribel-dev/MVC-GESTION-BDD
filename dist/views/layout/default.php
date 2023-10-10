@@ -81,9 +81,10 @@
 
     <!-- mon pti formulaire & mes petits titres qui apparaissent comme par magie..  -->
     <script>
-        function afficherFormulaire(idFormulaire) {
+        function afficherFormulaire(idFormulaire) {  
+        // il va m'afficher une erreur dans la console mais c normal car
+        // mes 3 vues partagent mon layout donc à chaque fois l'idformulaire est diférent..
             let formulaire = document.getElementById(idFormulaire);
-
             if (formulaire) {
                 formulaire.classList.toggle("visible");
             }
