@@ -13,11 +13,6 @@ class Country extends Model
         $this->getConnection();
     }
 
-    public function getStart()
-    {
-        return $this->_start;
-    }
-
     public function getRowsPerPage()
     {
         return $this->_rowsPerPage;
@@ -26,11 +21,6 @@ class Country extends Model
     public function setStart($start)
     {
         $this->_start = intval($start);
-    }
-
-    public function setRowsPerPage($rowsPerPage)
-    {
-        $this->_rowsPerPage = $rowsPerPage;
     }
 
 

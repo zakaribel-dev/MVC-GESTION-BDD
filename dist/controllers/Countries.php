@@ -35,10 +35,9 @@ class Countries extends Controller
         $allContinents = $this->Country->allContinents();
         $allCountries = $this->Country->allCountries();
         $rows_per_page = $this->Country->getRowsPerPage();
-        $start = $this->Country->getStart();
         $this->Country->setStart($page);
         $nbrCountries = $allCountries[0]['nbr_countries'];
-        $pages = ceil($nbrCountries / $rows_per_page);
+        $pages = ceil($nbrCountries / $rows_per_page);  
         $btnId = "btnCountries";
         $this->render('index', compact(
             'allCountries',

@@ -36,7 +36,7 @@
     <div class="content ">
         <?= $content ?>
     </div>
-
+    <div class="space"></div>
     <footer class="bg-secondary text-center text-white mt-5">
         <div class="container-fluid p-4">
             <section class="mb-4">

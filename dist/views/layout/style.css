@@ -16,7 +16,7 @@ body {
 
 .content {
   flex: 1;
-  min-height: 64vh;
+  min-height: 56vh;
 }
 
 #displayForm {
@@ -159,7 +159,7 @@ header a {
 }
 
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1400px) {
   .pagination-container {
     width: 100%;
     margin-bottom: 20px;
@@ -200,11 +200,8 @@ header a {
   }
 
   .space{
-    height: 20vh;
+   min-height: 20vh;
   }
 
-  .colorSpace{
-    height: 25vh;
-  }
 
 }
