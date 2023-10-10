@@ -1,9 +1,10 @@
 <br><br>
+
 <h1 class="display-3">Liste des couleurs</h1>
 <br>
-<button class="btn btn-primary" onclick="afficherFormulaire()">Ajouter</button>
+<button class="btn btn-primary" onclick="afficherFormulaire('displayFormColor')">Ajouter</button>
 <br><br>
-<div id="displayForm">
+<div id="displayFormColor">
     <form action="<?= PATH ?>/Couleurs/newColor" method="POST">
         Entrez une nouvelle couleur : <input type="text" name="couleur">
         <button type="submit" class="btn btn-dark">Valider</button>

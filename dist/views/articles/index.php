@@ -1,7 +1,7 @@
 <br><br>
 <h1 class="display-3">Liste des articles</h1>
 <br>
-<button class="btn btn-info" onclick="afficherFormulaire()">Ajouter</button> 
+<button class="btn btn-info" onclick="afficherFormulaire('displayForm')">Ajouter</button> 
 <br><br>
 <div id="displayForm">
 <form action="<?= PATH ?>/Articles/newArticle" method="POST">

@@ -1,9 +1,9 @@
 <br><br>
 <h1 class="display-3">Liste des pays</h1>
 <br>
-<button class="btn btn-primary" onclick="afficherFormulaire()">Ajouter</button>
+<button class="btn btn-primary" onclick="afficherFormulaire('displayFormCountries')">Ajouter</button>
 <br><br>
-<div id="displayForm">
+<div id="displayFormCountries">
     <form action="<?= PATH ?>/Countries/newCountry" method="POST">
 
         Entrez un nouveau pays : <input type="text" name="country">
