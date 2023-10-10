@@ -199,8 +199,12 @@ header a {
     margin-bottom: 10px;
   }
 
-  .homeSpace{
+  .space{
     height: 20vh;
+  }
+
+  .colorSpace{
+    height: 25vh;
   }
 
 }

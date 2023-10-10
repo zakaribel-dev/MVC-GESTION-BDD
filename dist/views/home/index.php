@@ -16,4 +16,4 @@
     </div>
 </div>
 
-<div class="homeSpace"></div>
+<div class="space"></div>
