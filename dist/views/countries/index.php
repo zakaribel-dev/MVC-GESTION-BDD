@@ -6,12 +6,13 @@
 <div id="displayFormCountries">
     <form action="<?= PATH ?>/Countries/newCountry" method="POST">
 
-        Entrez un nouveau pays : <input type="text"  name="country">
-        <select name="continent">
+        <input type="text"  name="country" requiered placeholder="Nouveau pays ici" > <br><br>
+        <select name="continent" requiered>
+        <option value="" disabled  selected>Choisissez un continent</option>
             <?php foreach ($allContinents as $continent) : ?>
                 <option value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
             <?php endforeach; ?>
-        </select>
+        </select> <br><br>
         <button type="submit" class="btn btn-dark">Valider</button>
     </form>
     <br>

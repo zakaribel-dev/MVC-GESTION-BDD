@@ -8,7 +8,7 @@
 
 <div id="displayFormColor">
     <form action="<?= PATH ?>/Couleurs/newColor" method="POST">
-        Entrez une nouvelle couleur : <input type="text" name="couleur">
+        <input type="text" name="couleur" placeholder="Nouvelle couleur ici"> <br><br>
         <button type="submit" class="btn btn-dark">Valider</button>
     </form>
     <br>
