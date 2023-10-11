@@ -67,9 +67,9 @@ class Countries extends Controller
             $newCountry['nom'] = htmlentities($_POST['country']);
             $newCountry['id'] = htmlentities($_POST['continent']);
             $this->Country->insert($newCountry);
-            $this->redirectWithMessage("Pays : " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true, 'countries');
+            $this->redirectWithMessage("Pays : <b>" . $_POST['country'] . "</b> bien ajouté", "success", '&#x1F44D;', true, 'countries');
         } else {
-            $this->redirectWithMessage('Merci de bien remplire tout le formulaire..', 'warning', '&#128545;', true, 'countries');
+            $this->redirectWithMessage('Merci de bien remplir tout le formulaire..', 'warning', '&#128545;', true, 'countries');
         }
     }
 

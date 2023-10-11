@@ -115,9 +115,9 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->insert($article);
-            $this->redirectWithMessage("Article : " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true, '/articles');
+            $this->redirectWithMessage("Article : <b>" . $_POST['nom'] . "</b> bien ajouté", "success", "&#x1F44D;", true, '/articles');
         } else {
-            $this->redirectWithMessage('Merci de bien remplire tout le formulaire..', 'warning', '&#128545;', true, 'articles');
+            $this->redirectWithMessage('Merci de bien remplir tout le formulaire..', 'warning', '&#128545;', true, 'articles');
         }
     }
 

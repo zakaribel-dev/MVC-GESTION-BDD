@@ -30,9 +30,10 @@ class Couleurs extends Controller
             htmlentities($_POST['couleur']);
             $newColor['nom'] = $_POST['couleur'];
             $this->Couleur->insert($newColor);
-            $this->redirectWithMessage("Couleur : ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true,"couleurs");
+
+            $this->redirectWithMessage('Couleur : <b>' . $_POST['couleur'] . '</b> bien ajoutée', "success","&#x1F44D;",true,"couleurs");
         } else {
-            $this->redirectWithMessage('Merci de bien remplire le formulaire..', 'warning', '&#128545;', true, 'couleurs');
+            $this->redirectWithMessage('Merci de bien remplir le formulaire..', 'warning', '&#128545;', true, 'couleurs');
         }
     }
 

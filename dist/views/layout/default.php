@@ -116,7 +116,7 @@
       Swal.fire({
         icon: '$alert', 
         title: '$info', 
-        text: '$msg',
+        html: '$msg',
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'OK',
         customClass: {
