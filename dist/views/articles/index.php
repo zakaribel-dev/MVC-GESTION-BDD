@@ -12,27 +12,28 @@
 
       <div class="mb-3 mr-3">
         <label for="nom" class="form-label">NOM :</label>
-        <input type="text" class="form-control" name="nom" required>
+        <input type="text" class="form-control" name="nom" >
       </div>
 
       <div class="mb-3 mr-3">
         <label for="prix" class="form-label">PRIX :</label>
-        <input type="number" class="form-control" name="prix" required>
+        <input type="number" class="form-control" name="prix" >
       </div>
 
       <div class="mb-3 mr-3">
         <label for="volume" class="form-label">VOLUME :</label>
-        <input type="number" class="form-control" name="volume" required>
+        <input type="number" class="form-control" name="volume" >
       </div>
 
       <div class="mb-3 mr-3">
         <label for="titrage" class="form-label">TITRAGE :</label>
-        <input type="number" class="form-control" name="titrage" required>
+        <input type="number" class="form-control" name="titrage" >
       </div>
 
       <div class="mb-3 mr-3">
         <label for="type" class="form-label">TYPE :</label>
-        <select class="form-select" name="type" required>
+        <select class="form-select" name="type" >
+        <option value="" disabled  selected >Choisissez un type</option>
           <?php foreach ($allTypes as $type): ?>
             <option value="<?= $type['ID_TYPE'] ?>"><?= $type['NOM_TYPE'] ?></option>
           <?php endforeach; ?>
@@ -41,7 +42,8 @@
 
       <div class="mb-3 mr-3">
         <label for="couleur" class="form-label">COULEUR :</label>
-        <select class="form-select" name="couleur" required>
+        <select class="form-select" name="couleur" >
+        <option value="" disabled  selected >Choisissez une couleur</option>
           <?php foreach ($allColors as $color): ?>
             <option value="<?= $color['ID_COULEUR'] ?>"><?= $color['NOM_COULEUR'] ?></option>
           <?php endforeach; ?>
@@ -50,7 +52,8 @@
 
       <div class="mb-3 mr-3">
         <label for="marque" class="form-label">MARQUE :</label>
-        <select class="form-select" name="marque" required>
+        <select class="form-select" name="marque" >
+        <option value="" disabled  selected >Choisissez une marque</option>
           <?php foreach ($allMarques as $marque): ?>
             <option value="<?= $marque['ID_MARQUE'] ?>"><?= $marque['NOM_MARQUE'] ?></option>
           <?php endforeach; ?>

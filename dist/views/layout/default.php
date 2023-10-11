@@ -113,15 +113,15 @@
         $path = PATH . "/" . $view;
 
         $scriptJS = "
-    Swal.fire({
+      Swal.fire({
         icon: '$alert', 
         title: '$info', 
         text: '$msg',
-        toast: true,
-        position: 'center',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        customClass: {
+            title: 'custom-swal-title', 
+        },
         didClose: () => {
             window.location.href = '$path';
         }
@@ -147,7 +147,11 @@
                 cancelButtonText: 'Annuler',
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Oui, supprimer!'
+                confirmButtonText: 'Oui, supprimer!',
+                customClass: {
+                    // c'est une classe que je met à mon title pour pouvoir centrer mon titre dans la fenetre swal..
+                    title: 'custom-swal-title', 
+                },
             }).then((result) => {
                 if (result.value) {
                     window.location.href = "<?= PATH ?>/" + controller + "/" + action + "/" + id;

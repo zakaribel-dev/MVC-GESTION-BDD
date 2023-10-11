@@ -32,7 +32,7 @@ class Couleurs extends Controller
             $this->Couleur->insert($newColor);
             $this->redirectWithMessage("Couleur : ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true,"couleurs");
         } else {
-            header("Location: " . PATH . "/couleurs");
+            $this->redirectWithMessage('Merci de bien remplire le formulaire..', 'warning', '&#128545;', true, 'couleurs');
         }
     }
 

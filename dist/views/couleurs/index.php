@@ -1,5 +1,4 @@
 <br><br>
-
 <h1 class="display-3">Liste des couleurs</h1>
 <br>
 <button class="btn" onclick="afficherFormulaire('displayFormColor')">Ouvrir/Fermer formulaire d'ajout</button>

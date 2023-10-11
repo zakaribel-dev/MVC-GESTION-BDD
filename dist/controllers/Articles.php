@@ -117,7 +117,7 @@ class Articles extends Controller
             $this->Article->insert($article);
             $this->redirectWithMessage("Article : " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true, '/articles');
         } else {
-            header("Location: " . PATH . "/articles");
+            $this->redirectWithMessage('Merci de bien remplire tout le formulaire..', 'warning', '&#128545;', true, 'articles');
         }
     }
 

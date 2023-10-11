@@ -62,14 +62,14 @@ class Countries extends Controller
     public function newCountry(): void
     {
         $newCountry = array();
-        if (!empty($_POST['country'])) {
+        if (!empty($_POST['country']) && !empty($_POST['continent'])) {
             $this->loadModel("Country");
             $newCountry['nom'] = htmlentities($_POST['country']);
             $newCountry['id'] = htmlentities($_POST['continent']);
             $this->Country->insert($newCountry);
             $this->redirectWithMessage("Pays : " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true, 'countries');
         } else {
-            header("Location: " . PATH . "/countries");
+            $this->redirectWithMessage('Merci de bien remplire tout le formulaire..', 'warning', '&#128545;', true, 'countries');
         }
     }
 

@@ -8,7 +8,7 @@
 
         <input type="text"  name="country" requiered placeholder="Nouveau pays ici" > <br><br>
         <select name="continent" requiered>
-        <option value="" disabled  selected>Choisissez un continent</option>
+        <option value="" disabled  selected >Choisissez un continent</option>
             <?php foreach ($allContinents as $continent) : ?>
                 <option value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
             <?php endforeach; ?>

@@ -8,10 +8,10 @@
 
  <input type="text" name="updatedCountry" required placeholder="<?= $currentCountry['NOM_PAYS'] ?>"> 
 
-    <select name="updatedContinent">
+    <select name="updatedContinent" required>
     <option value="" disabled selected>Choisissez un continent</option>
     <?php foreach ($allContinents as $continent): ?>
-    <option value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
+    <option  value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
     <?php endforeach; ?>
     </select>
     <button type="submit" class="btn btn-dark">Valider</button>
