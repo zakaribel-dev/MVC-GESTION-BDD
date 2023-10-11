@@ -80,9 +80,9 @@
 
     <!-- mon pti formulaire & mes petits titres qui apparaissent comme par magie..  -->
     <script>
-        function afficherFormulaire(idFormulaire) {  
-        // il va m'afficher une erreur dans la console mais c normal car
-        // mes 3 vues partagent mon layout donc à chaque fois l'idformulaire est diférent..
+        function afficherFormulaire(idFormulaire) {
+            // il va m'afficher une erreur dans la console mais c normal car
+            // mes 3 vues partagent mon layout donc à chaque fois l'idformulaire est diférent..
             let formulaire = document.getElementById(idFormulaire);
             if (formulaire) {
                 formulaire.classList.toggle("visible");
@@ -139,24 +139,46 @@
     ?>
 
     <script>
+        function confirmDelete(item, action, controller, id) {
+            Swal.fire({
+                title: 'Êtes-vous sûr de vouloir supprimer : <b>' + item + '</b> ?',
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText: 'Annuler',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Oui, supprimer!'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "<?= PATH ?>/" + controller + "/" + action + "/" + id;
+                }
+            });
 
-function confirmDelete(item,action,controller,id) {
-        Swal.fire({
-            title: 'Êtes-vous sûr de vouloir supprimer : <b>'+item+'</b> ?',
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonText: 'Annuler',
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Oui, supprimer!'
-        }).then((result) => {
-            if (result.value) {
-                window.location.href = "<?= PATH ?>/"+controller+"/"+action+"/"+id;
-            }
+            return false;
+        }
+
+        $(document).ready(function() {
+            $('.pour')
+                .delay(300)
+                .animate({
+                    height: '360px'
+                }, 500)
+                .delay(1600)
+                .slideUp(300);
+
+            $('#liquid')
+                .delay(300)
+                .animate({
+                    height: '170px'
+                }, 2500);
+
+            $('.beer-foam')
+                .delay(300)
+                .animate({
+                    bottom: '200px'
+                }, 2500);
         });
-
-        return false;
-    }
     </script>
 </body>
+
 </html>
