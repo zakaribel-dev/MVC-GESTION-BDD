@@ -19,6 +19,7 @@ body {
   min-height: 59vh;
 }
 
+
 #displayForm,
 #displayFormColor,
 #displayFormCountries {
@@ -36,9 +37,8 @@ body {
 #displayFormColor.visible,
 #displayFormCountries.visible {
   opacity: 1;
-  height: 60px;
+  height: 145px;
 }
-
 
 input,
 select {
@@ -82,8 +82,8 @@ header a {
   padding: 10px 15px;
   margin: 0 5px;
   height: 45px;
-  background-color: #17a2b8;
-  color: #dbd090;
+  background-color: #FFC008;
+  color: black;
   text-decoration: none;
   border-radius: 15px;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -121,30 +121,49 @@ header a {
   transition: opacity 2s, transform 2s;
 }
 
-
 .appear {
   opacity: 1;
   transform: translateY(0);
 }
 
-@media only screen and (max-width: 600px) {
+.form-inline{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 130px;
+}
+
+@media only screen and (max-width: 845px) {
   .pagination-container {
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
   }
+  .mobile{
+    margin-right: 80px;
+  }
+  #displayForm.visible {
+    opacity: 1;
+    height: 625px;
+  }
+  .form-inline{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 75px;
+  }
 
-  
-#displayForm.visible {
-  opacity: 1;
-  height: 520px;
-}
-
-#displayFormColor.visible,
-#displayFormCountries.visible {
-  opacity: 1;
-  height: 150px;
-}
+  #displayFormColor.visible,
+  #displayFormCountries.visible {
+    opacity: 1;
+    height: 150px;
+  }
 
   .mbb {
     display: none;
@@ -180,7 +199,7 @@ header a {
   }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (min-width: 912px) and (min-height: 1368px) {
   .pagination-container {
     width: 100%;
     margin-bottom: 20px;
@@ -189,9 +208,13 @@ header a {
 
   #displayForm.visible {
     opacity: 1;
-    height: 500px;
+    height: 280px;
   }
-  
+
+  .mobile{
+    margin-right: 80px;
+  }
+
   #displayFormColor.visible,
   #displayFormCountries.visible {
     opacity: 1;

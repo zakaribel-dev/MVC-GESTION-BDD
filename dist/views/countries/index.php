@@ -6,8 +6,8 @@
 <div id="displayFormCountries">
     <form action="<?= PATH ?>/Countries/newCountry" method="POST">
 
-        Entrez un nouveau pays : <input type="text" name="country">
-        <select name="continent">
+        Entrez un nouveau pays : <input type="text" class="form-control" name="country">
+        <select name="continent" class="form-control">
             <?php foreach ($allContinents as $continent) : ?>
                 <option value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
             <?php endforeach; ?>
@@ -20,17 +20,17 @@
 <!-- PAGINATION DU HAUT-->
 
 
- <div class="pagination-container">
-        <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
-        <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><i class="fa-solid fa-angle-left"></i></a>
+<div class="pagination-container">
+    <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
+    <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><i class="fa-solid fa-angle-left"></i></a>
 
-        <div class="page-info">
-       Page <?php echo @$page + 1; ?> sur <?php echo @$pages; ?>
+    <div class="page-info">
+        Page <?php echo @$page + 1; ?> sur <?php echo @$pages; ?>
     </div>
 
-        <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
-        <a href="<?= PATH ?>/countries/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
-    </div> <br>
+    <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
+    <a href="<?= PATH ?>/countries/index/<?= $pages - 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
+</div> <br>
 <!-- FIN PAGINATION DU HAUT  -->
 
 <div class="table-container">
@@ -49,9 +49,17 @@
 
                 <td>
                     <a href="<?= PATH ?>/countries/edit/<?= $country['ID_PAYS'] ?>">
-                        <button class='btn btn-info btn-sm fas fa-pencil-alt fa-sm'></button></a>
-                    <a onclick="return confirm('Etes vous sur de vouloir supprimer ce pays ?')" href="<?= PATH ?>/countries/deleteCountry/<?= $country['ID_PAYS'] ?>">
-                        <button class='btn btn-danger btn-sm fas fa-trash-alt fa-sm'></button></a>
+                        <button class='btn btn-info btn-sm fas fa-pencil-alt fa-sm'></button>
+                    </a>
+
+                    <a onclick="return confirmDelete(
+                    '<?= $country['NOM_PAYS'] ?>',
+                    'deleteCountry',
+                    'countries',
+                    <?= $country['ID_PAYS']?>)">
+                        <button class='btn btn-danger btn-sm fas fa-trash-alt fa-sm'></button>
+                    </a>
+
                 </td>
             </tr>
         <?php endforeach ?>
@@ -61,15 +69,15 @@
 
 <!-- PAGINATION DU BAS-->
 <div class="pagination-container">
-        <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
-        <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><i class="fa-solid fa-angle-left"></i></a>
+    <a href="<?= PATH ?>/countries/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
+    <a href="<?= PATH ?>/countries/index/<?= $page - 1 ?>" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?> "><i class="fa-solid fa-angle-left"></i></a>
 
-        <div class="page-info">
+    <div class="page-info">
         Page <?php echo @$page + 1; ?> sur <?php echo @$pages; ?>
     </div>
 
-        <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
-        <a href="<?= PATH ?>/countries/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
-    </div> <br>
-    
+    <a href="<?= PATH ?>/countries/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
+    <a href="<?= PATH ?>/countries/index/<?= $pages - 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
+</div> <br>
+
 <!-- FIN PAGINATION DU BAS  -->

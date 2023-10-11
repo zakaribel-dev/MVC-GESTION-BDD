@@ -3,40 +3,64 @@
 <br>
 <button class="btn btn-info" onclick="afficherFormulaire('displayForm')">Ajouter</button> 
 <br><br>
+
 <div id="displayForm">
-<form action="<?= PATH ?>/Articles/newArticle" method="POST">
-<i>Pour cacher le formulaire d'ajout, cliquez une deuxieme fois sur le bouton "Ajouter"</i><br><br>
-    <input type="hidden" name="page" value="page">
-    NOM : <input type="text" name="nom">   
-    PRIX : <input type="number" name="prix"> 
-    VOLUME : <input type="number" name="volume"> 
-    TITRAGE : <input type="number" name="titrage"> <br><br>
+  <div class="container mx-auto" >
+    <form action="<?= PATH ?>/Articles/newArticle" method="POST" class="form-inline">
 
-    MARQUE :
-    <select name="marque" >
-    <?php foreach ($allMarques as $marque): ?>
-    <option value="<?= $marque['ID_MARQUE'] ?>"><?= $marque['NOM_MARQUE'] ?></option>
-    <?php endforeach; ?>
-    </select>
-    TYPE :
-    <select name="type" >
-    <?php foreach ($allTypes as $type): ?>
-    <option value="<?= $type['ID_TYPE'] ?>"><?= $type['NOM_TYPE'] ?></option>
-    <?php endforeach; ?>
-    </select>
+      <input type="hidden" name="page" value="page">
 
-    COULEUR :        
-    <select name="couleur" >
-    <?php foreach ($allColors as $color): ?>
-    <option  value="<?= $color['ID_COULEUR'] ?>"><?= $color['NOM_COULEUR'] ?></option>
-    <?php endforeach; ?>
-    </select>
+      <div class="mb-3 mr-3">
+        <label for="nom" class="form-label">NOM :</label>
+        <input type="text" class="form-control" name="nom" required>
+      </div>
 
-    <button type="submit" class="btn btn-dark">Valider</button>
- <br><br><br><br>
-</form> 
+      <div class="mb-3 mr-3">
+        <label for="prix" class="form-label">PRIX :</label>
+        <input type="number" class="form-control" name="prix" required>
+      </div>
+
+      <div class="mb-3 mr-3">
+        <label for="volume" class="form-label">VOLUME :</label>
+        <input type="number" class="form-control" name="volume" required>
+      </div>
+
+      <div class="mb-3 mr-3">
+        <label for="titrage" class="form-label">TITRAGE :</label>
+        <input type="number" class="form-control" name="titrage" required>
+      </div>
+
+      <div class="mb-3 mr-3">
+        <label for="type" class="form-label">TYPE :</label>
+        <select class="form-select" name="type" required>
+          <?php foreach ($allTypes as $type): ?>
+            <option value="<?= $type['ID_TYPE'] ?>"><?= $type['NOM_TYPE'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="mb-3 mr-3">
+        <label for="couleur" class="form-label">COULEUR :</label>
+        <select class="form-select" name="couleur" required>
+          <?php foreach ($allColors as $color): ?>
+            <option value="<?= $color['ID_COULEUR'] ?>"><?= $color['NOM_COULEUR'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="mb-3 mr-3">
+        <label for="marque" class="form-label">MARQUE :</label>
+        <select class="form-select" name="marque" required>
+          <?php foreach ($allMarques as $marque): ?>
+            <option value="<?= $marque['ID_MARQUE'] ?>"><?= $marque['NOM_MARQUE'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-dark mobile">Valider</button>
+    </form>
+  </div>
 </div>
-
  <!-- PAGINATION DU HAUT-->
     <div class="pagination-container">
         <a href="<?= PATH ?>/articles/index/0" class="pagination-btn <?= ($page === null || $page < 1) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-left"></i></a>
@@ -52,7 +76,7 @@
     <!-- FIN PAGINATION DU HAUT  -->
 
 <div class="table-container"> 
-<table class="table table-success table-hover">
+<table class="table table-secondary table-hover">
     <tr>
         <th>Code</th>
         <th>Nom Article</th>
@@ -77,8 +101,13 @@
             <td>
                     <a href="<?= PATH ?>/articles/edit/<?= $article['ID_ARTICLE'] ?>">
                     <button class='btn btn-info btn-sm fas fa-pencil-alt fa-sm'></button></a>
-                <a onclick="return confirm('Etes vous sur de vouloir supprimer cet article ?')" href="<?= PATH ?>/articles/deleteArticle/<?= $article['ID_ARTICLE']?>">
-                    <button class='btn btn-danger btn-sm fas fa-trash-alt fa-sm'></button></a>
+                    <a onclick="return confirmDelete(
+                    '<?= $article['NOM_ARTICLE'] ?>',
+                    'deleteArticle',
+                    'articles',
+                    <?= $article['ID_ARTICLE']?>)">
+                        <button class='btn btn-danger btn-sm fas fa-trash-alt fa-sm'></button>
+                    </a>
             </td>
         </tr>
     <?php endforeach ?>

@@ -4,13 +4,16 @@
 <br>
 <button class="btn btn-primary" onclick="afficherFormulaire('displayFormColor')">Ajouter</button>
 <br><br>
+
+
 <div id="displayFormColor">
     <form action="<?= PATH ?>/Couleurs/newColor" method="POST">
-        Entrez une nouvelle couleur : <input type="text" name="couleur">
+        Entrez une nouvelle couleur : <input type="text" class="form-control" name="couleur">
         <button type="submit" class="btn btn-dark">Valider</button>
     </form>
     <br>
 </div>
+
 <div class="table-container">
     <table class="table table-success table-hover">
         <tr>
@@ -26,14 +29,19 @@
                 <td>
                     <a href="<?= PATH ?>/couleurs/edit/<?= $color['ID_COULEUR'] ?>">
                         <button class='btn btn-info btn-sm fas fa-pencil-alt fa-sm'></button></a>
-                    <a onclick="return confirm('Etes vous sur de vouloir supprimer cette couleur ?')" href="<?= PATH ?>/couleurs/deleteColor/<?= $color['ID_COULEUR'] ?>">
-                        <button class='btn btn-danger btn-sm fas fa-trash-alt fa-sm'></button></a>
+                        <a onclick="return confirmDelete(
+                            '<?= $color['NOM_COULEUR'] ?>',
+                            'deleteColor',
+                            'couleurs',
+                            '<?= $color['ID_COULEUR']?>')">
+                        <button class='btn btn-danger btn-sm fas fa-trash-alt fa-sm'></button>
+                    </a>
                 </td>
             </tr>
         <?php endforeach ?>
 
     </table>
-    
+
 </div>
 
 <div class="colorSpace"></div>

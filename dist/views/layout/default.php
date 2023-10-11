@@ -56,7 +56,7 @@
     </footer>
 
 
-    <!-- MA DEPENDENCE AVEC WEBPACK -->
+    <!-- MA DEPENDENCE AVEC WEBPACK.. -->
     <script src="<?= PATH ?>/views/js/bundle.js"></script>
 
     <!-- le joli pti menu! -->
@@ -69,7 +69,7 @@
                 if ($(this).attr('id') == '$btnId') {
                     $(this).addClass('btn-secondary ');
                 } else {
-                    $(this).addClass('btn-info');
+                    $(this).addClass('btn-warning');
                 }
             });
         })
@@ -77,7 +77,6 @@
 
     echo $scriptJS;
     ?>
-
 
     <!-- mon pti formulaire & mes petits titres qui apparaissent comme par magie..  -->
     <script>
@@ -121,14 +120,13 @@
         toast: true,
         position: 'center',
         showConfirmButton: false,
-        timer: 3200,
+        timer: 2000,
         timerProgressBar: true,
         didClose: () => {
-            window.location.href = '$path'; // Utilisez la constante PATH ici
+            window.location.href = '$path';
         }
     });
     ";
-
         echo "<script>" . $scriptJS . "</script>";
     }
 
@@ -139,6 +137,25 @@
         echo "";
     }
     ?>
-</body>
 
+    <script>
+
+function confirmDelete(item,action,controller,id) {
+        Swal.fire({
+            title: 'Êtes-vous sûr de vouloir supprimer : <b>'+item+'</b> ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Oui, supprimer!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "<?= PATH ?>/"+controller+"/"+action+"/"+id;
+            }
+        });
+
+        return false;
+    }
+    </script>
+</body>
 </html>

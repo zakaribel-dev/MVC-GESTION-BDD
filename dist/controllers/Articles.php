@@ -110,7 +110,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->insert($article);
-            $this->redirectWithMessage("Article " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true, '/articles');
+            $this->redirectWithMessage("Article " . $_POST['nom'] . "</b> bien ajouté", "success", "&#x1F44D;", true, '/articles');
         } else {
             header("Location: " . PATH . "/articles");
         }
