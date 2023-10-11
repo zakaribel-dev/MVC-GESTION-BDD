@@ -52,8 +52,11 @@ class Countries extends Controller
     {
         $btnId = "btnCountries";
         $this->loadModel("Country");
+        $this->Country->table = "pays";
+        $this->Country->id = ['ID_PAYS' => $currentCountryId];
+        $currentCountry = $this->Country->getOne();
         $allContinents = $this->Country->allContinents();
-        $this->render('edit', compact('currentCountryId', 'allContinents', 'btnId'));
+        $this->render('edit', compact('currentCountryId', 'allContinents', 'btnId','currentCountry'));
     }
 
     public function newCountry(): void
@@ -64,7 +67,7 @@ class Countries extends Controller
             $newCountry['nom'] = htmlentities($_POST['country']);
             $newCountry['id'] = htmlentities($_POST['continent']);
             $this->Country->insert($newCountry);
-            $this->redirectWithMessage("Pays " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true, 'countries');
+            $this->redirectWithMessage("Pays : " . $_POST['country'] . " bien ajouté", "success", '&#x1F44D;', true, 'countries');
         } else {
             header("Location: " . PATH . "/countries");
         }
@@ -92,7 +95,7 @@ class Countries extends Controller
         $this->loadModel("Country");
         $this->Country->delete(htmlentities($id));
         $this->redirectWithMessage(
-        'Pays numéro ' . $id . ' bien supprimé',
+        'Pays supprimé',
          'warning',
           'Aurevoir petit pays... &#128577;',
            true,

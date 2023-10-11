@@ -69,6 +69,10 @@ class Articles extends Controller
     public function edit(int $currentArticleId): void
     {
         $this->loadModel("Article");
+        $this->Article->table = "article";
+        $this->Article->id = ['ID_ARTICLE' => $currentArticleId];
+        $currentArticle = $this->Article->getOne();
+
         $allArticles = $this->Article->allArticles();
         $allTypes = $this->Article->allTypes();
         $allMarques = $this->Article->AllMarques();
@@ -83,6 +87,7 @@ class Articles extends Controller
             'allTypes',
             'allMarques',
             'allColors',
+            'currentArticle'
         ));
     }
 
@@ -110,7 +115,7 @@ class Articles extends Controller
 
             $this->loadModel("Article");
             $this->Article->insert($article);
-            $this->redirectWithMessage("Article : '" . $_POST['nom'] . "' bien ajouté", "success", "&#x1F44D;", true, '/articles');
+            $this->redirectWithMessage("Article : " . $_POST['nom'] . " bien ajouté", "success", "&#x1F44D;", true, '/articles');
         } else {
             header("Location: " . PATH . "/articles");
         }
@@ -152,7 +157,7 @@ class Articles extends Controller
         $this->loadModel("Article");
         $this->Article->delete($id);
         $this->redirectWithMessage(
-            'Article numéro ' . $id . ' a bien été supprimé',
+            'Article supprimé',
             'warning',
             'Aurevoir petit article... &#128577;',
             true,

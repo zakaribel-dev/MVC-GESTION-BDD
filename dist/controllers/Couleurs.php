@@ -15,8 +15,11 @@ class Couleurs extends Controller
     public function edit(int $currentColorId)
     {
         $btnId = "btnCouleurs";
-
-        $this->render('edit', compact('currentColorId','btnId'));
+        $this->loadModel("Couleur");
+        $this->Couleur->table = "couleur";
+        $this->Couleur->id = ['ID_COULEUR' => $currentColorId];
+        $currentColor = $this->Couleur->getOne();
+        $this->render('edit', compact('currentColorId','btnId','currentColor'));
     }
 
     public function newColor(): void
@@ -27,7 +30,7 @@ class Couleurs extends Controller
             htmlentities($_POST['couleur']);
             $newColor['nom'] = $_POST['couleur'];
             $this->Couleur->insert($newColor);
-            $this->redirectWithMessage("Couleur ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true,"couleurs");
+            $this->redirectWithMessage("Couleur : ".$_POST['couleur']. " bien ajoutée", "success","&#x1F44D;",true,"couleurs");
         } else {
             header("Location: " . PATH . "/couleurs");
         }
@@ -51,7 +54,7 @@ class Couleurs extends Controller
     {
         $this->loadModel("Couleur");
         $this->Couleur->delete(htmlentities($id));  
-        $this->redirectWithMessage('Couleur bien supprimée','warning','Aurevoir petite couleur... &#128577;',true,"couleurs");
+        $this->redirectWithMessage('Couleur supprimée','warning','Aurevoir petite couleur... &#128577;',true,"couleurs");
     }
 
 

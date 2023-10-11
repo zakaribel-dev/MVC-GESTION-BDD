@@ -1,7 +1,7 @@
 <br><br>
 <h1 class="display-3">Liste des articles</h1>
 <br>
-<button class="btn btn-info" onclick="afficherFormulaire('displayForm')">Ajouter</button> 
+<button class="btn" onclick="afficherFormulaire('displayForm')">Ouvrir/Fermer formulaire d'ajout</button> 
 <br><br>
 
 <div id="displayForm">
@@ -76,7 +76,7 @@
     <!-- FIN PAGINATION DU HAUT  -->
 
 <div class="table-container"> 
-<table class="table table-secondary table-hover">
+<table class="table table-success table-hover">
     <tr>
         <th>Code</th>
         <th>Nom Article</th>
@@ -100,7 +100,8 @@
             <td><?= $article['NOM_TYPE'] ?> </td>
             <td>
                     <a href="<?= PATH ?>/articles/edit/<?= $article['ID_ARTICLE'] ?>">
-                    <button class='btn btn-info btn-sm fas fa-pencil-alt fa-sm'></button></a>
+                    <button class='btn btn-warning btn-sm fas fa-pencil-alt fa-sm'></button></a>
+
                     <a onclick="return confirmDelete(
                     '<?= $article['NOM_ARTICLE'] ?>',
                     'deleteArticle',

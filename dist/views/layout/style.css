@@ -37,7 +37,7 @@ body {
 #displayFormColor.visible,
 #displayFormCountries.visible {
   opacity: 1;
-  height: 145px;
+  height: 80px;
 }
 
 input,
@@ -58,7 +58,7 @@ header a {
   margin: 0 auto;
   overflow-x: auto;
 }
-.btn-info:hover,
+.btn-warning:hover,
 .btn-danger:hover {
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;

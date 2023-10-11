@@ -6,8 +6,8 @@
 <br>
 <br>
 <input type="hidden" name="id" value="<?= $currentColorId;?>">
-Nouvelle couleur :
-<input type="text" name="updatedColor">
+<input type="text" name="updatedColor" required placeholder="<?=$currentColor['NOM_COULEUR']?>">
 <button type="submit" class="btn btn-dark">Valider</button>
 
 </form>
+

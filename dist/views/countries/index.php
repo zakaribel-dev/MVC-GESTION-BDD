@@ -1,13 +1,13 @@
 <br><br>
 <h1 class="display-3">Liste des pays</h1>
 <br>
-<button class="btn btn-primary" onclick="afficherFormulaire('displayFormCountries')">Ajouter</button>
+<button class="btn " onclick="afficherFormulaire('displayFormCountries')">Ouvrir/Fermer formulaire d'ajout</button>
 <br><br>
 <div id="displayFormCountries">
     <form action="<?= PATH ?>/Countries/newCountry" method="POST">
 
-        Entrez un nouveau pays : <input type="text" class="form-control" name="country">
-        <select name="continent" class="form-control">
+        Entrez un nouveau pays : <input type="text"  name="country">
+        <select name="continent">
             <?php foreach ($allContinents as $continent) : ?>
                 <option value="<?= $continent['ID_CONTINENT'] ?>"><?= $continent['NOM_CONTINENT'] ?></option>
             <?php endforeach; ?>
@@ -49,7 +49,7 @@
 
                 <td>
                     <a href="<?= PATH ?>/countries/edit/<?= $country['ID_PAYS'] ?>">
-                        <button class='btn btn-info btn-sm fas fa-pencil-alt fa-sm'></button>
+                        <button class='btn btn-warning btn-sm fas fa-pencil-alt fa-sm'></button>
                     </a>
 
                     <a onclick="return confirmDelete(
