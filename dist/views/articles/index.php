@@ -75,10 +75,12 @@
 
         <a href="<?= PATH ?>/articles/index/<?= $page + 1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angle-right"></i></a>
         <a href="<?= PATH ?>/articles/index/<?= $pages -1 ?>" class="pagination-btn <?= ($page + 2 > $pages) ? 'disabled' : '' ?>"><i class="fa-solid fa-angles-right"></i></a>
-    </div> <br>
+    </div> 
     <!-- FIN PAGINATION DU HAUT  -->
+    <br>
+<div class="table-container">
+<div class="msgMobile"><i>Swippez le tableau vers la droite pour voir le tableau en entier <i class="fa-solid fa-arrow-right"></i></i></div>
 
-<div class="table-container"> 
 <table class="table table-success table-hover">
     <tr>
         <th>Code</th>
@@ -116,9 +118,7 @@
         </tr>
     <?php endforeach ?>
     </table>
-
-      
-</div>
+    </div>
 </div>
  <!-- PAGINATION DU BAS-->
  <div class="pagination-container">

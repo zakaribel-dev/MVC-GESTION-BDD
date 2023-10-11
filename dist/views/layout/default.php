@@ -119,9 +119,6 @@
         html: '$msg',
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'OK',
-        customClass: {
-            title: 'custom-swal-title', 
-        },
         didClose: () => {
             window.location.href = '$path';
         }
@@ -148,10 +145,6 @@
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Oui, supprimer!',
-                customClass: {
-                    // c'est une classe que je met à mon title pour pouvoir centrer mon titre dans la fenetre swal..
-                    title: 'custom-swal-title', 
-                },
             }).then((result) => {
                 if (result.value) {
                     window.location.href = "<?= PATH ?>/" + controller + "/" + action + "/" + id;
