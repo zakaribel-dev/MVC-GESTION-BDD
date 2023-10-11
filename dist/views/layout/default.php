@@ -145,6 +145,7 @@ function confirmDelete(item,action,controller,id) {
             title: 'Êtes-vous sûr de vouloir supprimer : <b>'+item+'</b> ?',
             icon: 'warning',
             showCancelButton: true,
+            cancelButtonText: 'Annuler',
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
             confirmButtonText: 'Oui, supprimer!'
