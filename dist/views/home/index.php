@@ -1,4 +1,5 @@
 <br><br><br>
+<div class="container">
 <div class="row">
         <div class="col-12">
             <div class="display-4 beer">🍺 Hello 🍺</div>
@@ -31,3 +32,4 @@
 </div>
 </div>
 
+</div>
