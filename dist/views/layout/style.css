@@ -23,14 +23,13 @@ body {
   background-color: #dbd090 !important;
 }
 
-.msgMobile{
+.msgMobile {
   display: none;
 }
 
 .content {
   flex: 1;
   min-height: 59vh;
-
 }
 .table-container {
   max-width: 90%;
@@ -129,7 +128,6 @@ header a {
   font-weight: 900;
 }
 
-
 .mbb {
   opacity: 0;
   transform: translateY(-100%);
@@ -158,12 +156,11 @@ header a {
     text-align: center;
   }
 
-  
   .swal2-title {
     text-align: center;
     margin: 0;
   }
-  .msgMobile{
+  .msgMobile {
     display: block;
   }
   .mobile {
@@ -242,7 +239,6 @@ header a {
     text-align: center;
   }
 
-
   #displayForm.visible {
     opacity: 1;
     height: 280px;
@@ -261,7 +257,6 @@ header a {
   .mbb {
     display: none;
   }
-
 
   .beer {
     display: block;

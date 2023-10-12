@@ -154,17 +154,18 @@ class Articles extends Controller
 
     public function deleteArticle(int $id): void
     {
-        $this->loadModel("Article");
-        $this->Article->delete($id);
-        $this->redirectWithMessage(
-            'Article supprimé',
-            'warning',
-            'Aurevoir petit article... &#128577;',
-            true,
-            'articles'
-        );
-    }
+     
 
+        $this->loadModel("Article");
+         $this->Article->delete($id); 
+            $this->redirectWithMessage(
+                'Article supprimé',
+                'warning',
+                'Aurevoir petit article... &#128577;',
+                true,
+                'articles');
+        
+    }
 
     private function redirectWithMessage($message, $type_message = null, $info = null, $envoi = false, $view = null): void
     {

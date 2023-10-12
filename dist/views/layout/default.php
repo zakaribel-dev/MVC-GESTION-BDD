@@ -66,7 +66,7 @@
             $('.btn').each(function() {
                 $(this).removeClass('btn-info');
                 $(this).removeClass('btn-secondary');
-                if ($(this).attr('id') == '$btnId') {
+                if ($(this).attr('id') == '".@$btnId."') {
                     $(this).addClass('btn-secondary ');
                 } else {
                     $(this).addClass('btn-warning');
@@ -80,14 +80,14 @@
 
     <!-- mon pti formulaire & mes petits titres qui apparaissent comme par magie..  -->
     <script>
+        
         function afficherFormulaire(idFormulaire) {
-            // il va m'afficher une erreur dans la console mais c normal car
-            // mes 3 vues partagent mon layout donc à chaque fois l'idformulaire est diférent..
             let formulaire = document.getElementById(idFormulaire);
             if (formulaire) {
                 formulaire.classList.toggle("visible");
             }
         }
+
         document.addEventListener("DOMContentLoaded", function() {
             let paragraph = document.querySelector('.paragraph');
             paragraph.classList.add('appear');
