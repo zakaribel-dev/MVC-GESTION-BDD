@@ -27,20 +27,21 @@ class Erreur extends Controller
     private function getCustomErrorMessage()
     {
         $errorCode = $this->exception->getCode();
-    // à la base quand je voulais supprimer un élément lié à des clés étrangères, il me disait
-    // SQLSTATE[23000]: Integrity constraint violation
-        if ($errorCode == '23000') { 
-            $message = 'Désolé, vous ne pouvez pas supprimer cela car cet élément est déjà lié à des éléments étrangers.';
-            $type_message = "error";
-            $envoi = true;
-            $info = "Erreur";
+        // à la base quand je voulais supprimer un élément lié à des clés étrangères, il me disait
+        // SQLSTATE[23000]: Integrity constraint violation
+        if ($errorCode == '23000') {
+            $message = '<b>Désolé, supression impossible car cet élément est déjà lié à un ou des élément(s) étranger(s).</b>';
+            $error = true;
+            $info = "Hop hop hop &#x1F913;";
+            $alert = "error";
+         
             $this->render(
                 'index',
                 compact(
                     'message',
-                    'type_message',
+                    'error',
                     'info',
-                    'envoi',
+                    'alert'
                 )
             );
         } else {

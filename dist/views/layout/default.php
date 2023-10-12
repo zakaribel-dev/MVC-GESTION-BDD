@@ -127,13 +127,40 @@
         echo "<script>" . $scriptJS . "</script>";
     }
 
+    function sendErrorAlert($alert,$info,$message){
+        $scriptError = " Swal.fire({
+            icon: '$alert', 
+            title: '$info', 
+            html: '$message',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+            didClose: () => {
+                history.back();
+            }
+        });
+    ";
+
+    echo "<script>" . $scriptError . "</script>";
+    }
+
     // trigger de ma fonction ou non..
     if (@$envoi) {
         SendAlert($message, $type_message, $info, $view);
     } else {
         echo "";
     }
+
+    // trigger de ma fonction ou non..
+    if(@$error){
+        sendErrorAlert($alert,$info,$message);
+    }else{
+        echo '';
+    }
+
+
     ?>
+
+    
 
     <script>
         function confirmDelete(item, action, controller, id) {
