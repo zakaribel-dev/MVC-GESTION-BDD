@@ -1,3 +1,3 @@
 Ma Belle Bière..
 
-Symfony beer management.
+Beer Management system with an PHP MVC architecture.
